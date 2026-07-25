@@ -12,13 +12,6 @@ static const ProtoPirateProtocolTiming protocol_timings[] = {
         .min_count_bit = 64,
     },
     {
-        .name = "Honda V1",
-        .te_short = 1000,
-        .te_long = 2000,
-        .te_delta = 400,
-        .min_count_bit = 64,
-    },
-    {
         .name = "Kia V0",
         .te_short = 250,
         .te_long = 500,
@@ -31,13 +24,6 @@ static const ProtoPirateProtocolTiming protocol_timings[] = {
         .te_long = 1600,
         .te_delta = 200,
         .min_count_bit = 56,
-    },
-    {
-        .name = "Kia V2",
-        .te_short = 500,
-        .te_long = 1000,
-        .te_delta = 150,
-        .min_count_bit = 51,
     },
     {
         .name = "Kia V3/V4",
