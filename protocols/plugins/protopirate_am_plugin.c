@@ -13,7 +13,7 @@
 #include "../renault_v0.h"
 #include "../subaru.h"
 #include "../star_line.h"
-#include "../honda_v1.h"
+
 
 static const SubGhzProtocol* const protopirate_protocol_registry_am_items[] = {
     &chrysler_protocol_v0,
