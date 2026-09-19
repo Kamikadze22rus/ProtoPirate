@@ -718,20 +718,7 @@ static uint8_t emu_button_for_protocol(
         default:
             return original;
         }
-    } else if(strstr(protocol, "Honda V1")) {
-        switch(key) {
-        case InputKeyUp:
-            return 0x08; // Lock
-        case InputKeyOk:
-            return 0x00; // Unlock
-        case InputKeyDown:
-            return 0x09; // Trunk
-        case InputKeyLeft:
-            return 0x0A; // Panic
-        default:
-            return original;
-        }
-    } else if(strstr(protocol, "Honda Static")) {
+    } else if(strstr(protocol, " Static")) {
         switch(key) {
         case InputKeyUp:
             return 0x1; // Lock
@@ -759,7 +746,7 @@ static uint8_t emu_button_for_protocol(
         default:
             return original;
         }
-    } else if(strstr(protocol, "Honda V2")) {
+    } else if(strstr(protocol, " V2")) {
         switch(key) {
         case InputKeyUp:
             return 0x02; // Lock
@@ -1199,15 +1186,15 @@ static void plugin_on_enter(void* context) {
 
     ctx->replay_only = false;
 
-    // Standalone Suzuki/Honda/Mitsubishi V0 captures: merged into Kia V0
+    // Standalone Suzuki//Mitsubishi V0 captures: merged into Kia V0
     if(furi_string_equal(ctx->protocol_name, "Suzuki") ||
        furi_string_equal(ctx->protocol_name, "Suzuki V0") ||
-       furi_string_equal(ctx->protocol_name, "Honda V0") ||
+       furi_string_equal(ctx->protocol_name, " V0") ||
        furi_string_equal(ctx->protocol_name, "Mitsu V0") ||
        furi_string_equal(ctx->protocol_name, "Mitsu v0") ||
        furi_string_equal(ctx->protocol_name, "Mitsubishi V0") ||
        furi_string_equal(ctx->protocol_name, "Mitsubishi v0")) {
-        uint32_t kia_v0_type = furi_string_equal(ctx->protocol_name, "Honda V0") ? 3U :
+        uint32_t kia_v0_type = furi_string_equal(ctx->protocol_name, " V0") ? 3U :
                                (furi_string_equal(ctx->protocol_name, "Mitsu V0") ||
                                 furi_string_equal(ctx->protocol_name, "Mitsu v0") ||
                                 furi_string_equal(ctx->protocol_name, "Mitsubishi V0") ||
@@ -1223,10 +1210,10 @@ static void plugin_on_enter(void* context) {
     }
 
     if(furi_string_equal(ctx->protocol_name, "Land Rover V0")) {
-        furi_string_set(ctx->protocol_name, "Honda V2");
+        furi_string_set(ctx->protocol_name, " V2");
         flipper_format_rewind(ctx->flipper_format);
         flipper_format_insert_or_update_string_cstr(
-            ctx->flipper_format, EMU_PRESET_KEY_PROTOCOL, "Honda V2");
+            ctx->flipper_format, EMU_PRESET_KEY_PROTOCOL, " V2");
     }
 
     const char* canonical_protocol =
